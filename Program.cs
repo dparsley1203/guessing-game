@@ -8,12 +8,12 @@ namespace guessing_game
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose a Difficulty 1 - Easy, 2 - Medium, 3 - Hard");
+            Console.WriteLine("Choose a Difficulty 1 - Easy, 2 - Medium, 3 - Hard, 4 - Cheater");
             int difficulty = int.Parse(Console.ReadLine());
 
             var guesses = new List<int>
             {
-                7, 5, 3
+                7, 5, 3, 10000
             };
 
             Random random = new Random();
