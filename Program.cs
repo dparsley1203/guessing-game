@@ -29,7 +29,7 @@ namespace guessing_game
             // Console.Write($"Your guess was the # {GuessedNumber}");
 
 
-
+            // will show a wrong answer if you guess correctly on last attempt
             for (int i = 1; i <= NumOfGuess; i++)
             {
                 if (GuessedNumber == SecretNumber)
@@ -49,13 +49,12 @@ namespace guessing_game
                         Console.WriteLine("Guess Lower");
                     }
                     Console.WriteLine();
-                    Console.WriteLine(SecretNumber);
                     Console.WriteLine($"Guess Again. You have {NumOfGuess - i} left");
                     GuessedNumber = int.Parse(Console.ReadLine());
 
                 }
             }
-
+            //code would not say you won if you guessed the number on the last attempt.  This code allows it to display the winning prompt.
             if (GuessedNumber == SecretNumber)
             {
                 Console.WriteLine("Conga-Rats!! You Won!!");
