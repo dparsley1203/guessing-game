@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace guessing_game
 {
@@ -6,10 +8,18 @@ namespace guessing_game
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Choose a Difficulty 1 - Easy, 2 - Medium, 3 - Hard");
+            int difficulty = int.Parse(Console.ReadLine());
+
+            var guesses = new List<int>
+            {
+                7, 5, 3
+            };
+
             Random random = new Random();
             int SecretNumber = random.Next(1, 100);
 
-            int NumOfGuess = 3;
+            int NumOfGuess = guesses[difficulty - 1];
 
             Console.WriteLine("Guess a number!");
             Console.Write("Enter Guess ");
@@ -20,7 +30,7 @@ namespace guessing_game
 
 
 
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= NumOfGuess; i++)
             {
                 if (GuessedNumber == SecretNumber)
                 {
@@ -39,13 +49,23 @@ namespace guessing_game
                         Console.WriteLine("Guess Lower");
                     }
                     Console.WriteLine();
-                    Console.WriteLine($"Guess Again. You have {NumOfGuess--} left");
+                    Console.WriteLine(SecretNumber);
+                    Console.WriteLine($"Guess Again. You have {NumOfGuess - i} left");
                     GuessedNumber = int.Parse(Console.ReadLine());
 
                 }
             }
 
-            Console.WriteLine($"The correct number was {SecretNumber}");
+            if (GuessedNumber == SecretNumber)
+            {
+                Console.WriteLine("Conga-Rats!! You Won!!");
+                return;
+            }
+            else
+            {
+
+                Console.WriteLine($"Out of Guesses.  The correct number was {SecretNumber}");
+            }
         }
     }
 
