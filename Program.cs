@@ -13,7 +13,7 @@ namespace guessing_game
 
             var guesses = new List<int>
             {
-                7, 5, 3, 10000
+                7, 5, 3, int.MaxValue
             };
 
             Random random = new Random();
@@ -29,9 +29,18 @@ namespace guessing_game
             // Console.Write($"Your guess was the # {GuessedNumber}");
 
 
+
             // will show a wrong answer if you guess correctly on last attempt
             for (int i = 1; i <= NumOfGuess; i++)
             {
+                if (NumOfGuess > 10)
+                {
+                    Console.WriteLine("You have Unlimited Guesses");
+                }
+                else
+                {
+                    System.Console.WriteLine($"Guess Again. You have {NumOfGuess - i} left");
+                }
                 if (GuessedNumber == SecretNumber)
                 {
                     Console.WriteLine();
@@ -49,7 +58,7 @@ namespace guessing_game
                         Console.WriteLine("Guess Lower");
                     }
                     Console.WriteLine();
-                    Console.WriteLine($"Guess Again. You have {NumOfGuess - i} left");
+                    // Console.WriteLine($"Guess Again. You have {NumOfGuess - i} left");
                     GuessedNumber = int.Parse(Console.ReadLine());
 
                 }
